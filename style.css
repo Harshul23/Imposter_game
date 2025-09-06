@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body::before {
+  content: "🍕 🦁 🏙️ 🛠️ 🎬 👩‍⚕️";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4rem;
+  opacity: 0.05;
+  animation: floatIcons 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatIcons {
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+.game-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+select, input, button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  background: #e94560;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff2e63;
+}
+
+#wordDisplay {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

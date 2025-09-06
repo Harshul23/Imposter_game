@@ -1,0 +1,44 @@
+{
+  "Food": [
+    "Pizza","Burger","Pasta","Sushi","Cake","Ice Cream","Salad","Soup","Steak","Sandwich","Rice","Curry","Cheese","Taco","Donut","Hotdog","Fried Chicken","Noodles","Burrito","Pancakes",
+    "Waffles","Muffin","Croissant","Bagel","Toast","Jam","Butter","Honey","Chocolate","Candy","Chips","Popcorn","Nachos","Quesadilla","Lasagna","Ramen","Dumplings","Spring Roll","Kebab","Falafel",
+    "Shawarma","BBQ","Fries","Mashed Potatoes","Gravy","Pie","Brownie","Cupcake","Pudding","Custard","Milkshake","Smoothie","Juice","Soda","Water","Coffee","Tea","Espresso","Latte","Cappuccino",
+    "Milk","Yogurt","Cheesecake","Gnocchi","Risotto","Paella","Caviar","Lobster","Shrimp","Crab","Oyster","Clam","Scallop","Octopus","Squid","Salmon","Tuna","Beef","Pork","Lamb","Goat",
+    "Duck","Turkey","Ham","Bacon","Sausage","Pepperoni","Vegetables","Carrot","Potato","Onion","Garlic","Tomato","Cucumber","Lettuce","Spinach","Broccoli","Cauliflower","Mushroom","Pepper","Chili","Corn","Peas","Beans","Lentils","Chickpeas","Olives","Avocado","Mango","Apple","Banana","Grapes","Orange","Strawberry","Blueberry","Pineapple","Papaya"
+  ],
+  "Animals": [
+    "Tiger","Lion","Elephant","Giraffe","Dog","Cat","Monkey","Zebra","Shark","Dolphin","Eagle","Owl","Horse","Snake","Panda","Kangaroo","Penguin","Whale","Wolf","Fox",
+    "Bear","Leopard","Cheetah","Hyena","Crocodile","Alligator","Turtle","Tortoise","Rabbit","Deer","Moose","Buffalo","Bison","Camel","Donkey","Goat","Sheep","Cow","Pig","Hen",
+    "Rooster","Duck","Swan","Goose","Parrot","Peacock","Flamingo","Seagull","Pelican","Hawk","Falcon","Vulture","Bat","Rat","Mouse","Squirrel","Hedgehog","Otter","Beaver","Seal",
+    "Walrus","Octopus","Squid","Crab","Lobster","Jellyfish","Starfish","Clownfish","Seahorse","Goldfish","Piranha","Frog","Toad","Lizard","Chameleon","Iguana","Gecko","Koala","Sloth","Armadillo",
+    "Anteater","Porcupine","Platypus","Raccoon","Skunk","Chipmunk","Mole","Badger","Chimpanzee","Gorilla","Orangutan","Baboon","Pigeon","Crow","Sparrow","Robin","Stork","Heron","Woodpecker","Turkey"
+  ],
+  "Places": [
+    "Beach","Desert","Mountain","Jungle","City","Village","Castle","Temple","School","Hospital","Airport","Park","Zoo","Library","Market","Mall","Stadium","Theater","Hotel","Restaurant",
+    "Cafe","Bakery","Farm","Barn","Harbor","Port","Bridge","Tunnel","Highway","Road","Street","Alley","Square","Plaza","Palace","Fort","Tower","Church","Mosque","Synagogue","Monastery",
+    "Cave","Island","Forest","Savannah","Glacier","Volcano","Canyon","Valley","River","Lake","Pond","Waterfall","Spring","Well","Fountain","Garden","Courtyard","Playground","Museum","Gallery",
+    "Factory","Office","Shop","Store","Gym","Club","Bar","Pub","Cinema","Aquarium","Planetarium","Observatory","Laboratory","Workshop","Garage","Warehouse","Bus Stop","Train Station","Subway","Metro",
+    "Capitol","Parliament","Embassy","Consulate","Prison","Jail","Police Station","Fire Station","Military Base","Camp","Tent","Resort","Spa","Beach House","Cabin","Hut","Igloo","Lighthouse","Windmill","Skyscraper"
+  ],
+  "Objects": [
+    "Laptop","Phone","Car","Bicycle","Chair","Table","Camera","Microscope","Television","Radio","Pen","Pencil","Watch","Glasses","Lamp","Fan","Heater","Stove","Oven","Fridge",
+    "Freezer","Microwave","Blender","Toaster","Mixer","Vacuum","Washing Machine","Dryer","Iron","Printer","Scanner","Router","Speaker","Headphones","Earbuds","Charger","Cable","Keyboard","Mouse","Monitor",
+    "Remote","Controller","Joystick","Gamepad","Console","Disc","Book","Notebook","Diary","Calendar","Map","Globe","Ruler","Compass","Calculator","Scissors","Knife","Fork","Spoon","Plate",
+    "Bowl","Cup","Mug","Bottle","Jar","Bag","Backpack","Suitcase","Wallet","Purse","Key","Lock","Door","Window","Mirror","Brush","Comb","Toothbrush","Toothpaste","Soap",
+    "Shampoo","Towel","Blanket","Pillow","Bed","Sofa","Shelf","Drawer","Closet","Cupboard","Bucket","Mop","Broom","Dustpan","Gloves","Helmet","Hat","Cap","Shoes","Boots"
+  ],
+  "Movies": [
+    "Inception","Titanic","Avatar","The Matrix","The Godfather","Avengers","Frozen","Shrek","Harry Potter","Star Wars","Jurassic Park","The Lion King","Batman","Toy Story","Interstellar","Iron Man","Thor","Black Panther","Doctor Strange","Spider-Man",
+    "Captain Marvel","Guardians of the Galaxy","Endgame","Infinity War","Civil War","Ant-Man","Hulk","Deadpool","Logan","X-Men","Wolverine","Fantastic Four","Justice League","Aquaman","Wonder Woman","Man of Steel","The Dark Knight Rises","Joker","Suicide Squad","Birds of Prey",
+    "Minions","Despicable Me","Zootopia","Moana","Encanto","Coco","Luca","Turning Red","Ratatouille","Inside Out","Soul","Onward","Brave","Frozen 2","Big Hero 6","Wreck-It Ralph","Bolt","Finding Nemo","Finding Dory","Monsters Inc",
+    "Monsters University","Cars","Cars 2","Cars 3","Up","Wall-E","A Bug’s Life","Kung Fu Panda","Madagascar","Ice Age","Rio","Sing","Trolls","Croods","Hotel Transylvania","Cloudy with a Chance of Meatballs","How to Train Your Dragon","Dragon 2","Dragon 3","Spirit",
+    "Puss in Boots","Megamind","Bee Movie","The Lorax","Secret Life of Pets","Pets 2","Open Season","Over the Hedge","Happy Feet","Surf’s Up","Robots","Arthur Christmas","Rise of the Guardians","Epic","Home","Horton Hears a Who","Ferdinand","Abominable","Storks","The Angry Birds Movie"
+  ],
+  "Jobs": [
+    "Doctor","Engineer","Teacher","Pilot","Chef","Farmer","Police Officer","Nurse","Lawyer","Actor","Musician","Athlete","Firefighter","Scientist","Soldier","Driver","Painter","Writer","Journalist","Photographer",
+    "Designer","Architect","Carpenter","Plumber","Electrician","Mechanic","Technician","Programmer","Developer","Animator","Artist","Singer","Dancer","Director","Producer","Editor","Barber","Hairdresser","Beautician","Makeup Artist",
+    "Model","Tailor","Butcher","Baker","Cashier","Shopkeeper","Waiter","Waitress","Manager","Clerk","Accountant","Banker","Broker","Trader","Entrepreneur","CEO","Politician","Mayor","Governor","President",
+    "Prime Minister","Diplomat","Ambassador","Judge","Magistrate","Detective","Investigator","Spy","Pilot","Astronaut","Scientist","Biologist","Chemist","Physicist","Geologist","Mathematician","Statistician","Economist","Pharmacist","Dentist",
+    "Veterinarian","Optician","Surgeon","Therapist","Counselor","Psychologist","Priest","Monk","Nun","Pastor","Imam","Rabbi","Coach","Trainer","Referee","Guide","Translator","Interpreter","Librarian","Historian"
+  ]
+}
