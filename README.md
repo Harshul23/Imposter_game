@@ -2,8 +2,10 @@
 
 A fun browser-based party game inspired by **social deduction games**.  
 Players take turns revealing a secret word, but one player (the impostor) gets a **different word**. After a discussion, everyone votes to find the impostor!
-
 ---
+
+
+<img width="1280" height="682" alt="Screenshot 2025-09-06 at 11 05 05 PM" src="https://github.com/user-attachments/assets/6f8f701d-f2bd-49af-abb2-e93e168ac5d7" />
 
 ## 🚀 Features
 
@@ -49,13 +51,6 @@ impostor-word-game/
 6. Everyone votes for who they think the impostor is.  
 7. The game reveals the impostor and declares the result! 🎉  
 
----
-
-## 📷 Screenshots (Optional)
-
-_Add screenshots of your game UI here once you run it in the browser._
-
----
 
 ## ⚡ Installation & Usage
 
