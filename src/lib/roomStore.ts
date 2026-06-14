@@ -29,17 +29,26 @@ function getLocalStore(): Record<string, Room> {
   return globalThis.roomStore;
 }
 
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Support both Vercel KV (KV_) and Vercel Redis (REDIS_) integration environment variables
+const KV_URL = process.env.KV_REST_API_URL || 
+               process.env.REDIS_REST_API_URL || 
+               process.env.UPSTASH_REDIS_REST_URL;
+
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || 
+                 process.env.REDIS_REST_API_TOKEN || 
+                 process.env.UPSTASH_REDIS_REST_TOKEN;
 
 export async function getRoom(id: string): Promise<Room | null> {
   const upperId = id.toUpperCase();
   if (KV_URL && KV_TOKEN) {
     try {
-      const res = await fetch(`${KV_URL}/get/room:${upperId}`, {
+      const res = await fetch(KV_URL, {
+        method: "POST",
         headers: {
           Authorization: `Bearer ${KV_TOKEN}`,
+          "Content-Type": "application/json"
         },
+        body: JSON.stringify(["GET", `room:${upperId}`]),
         cache: 'no-store'
       });
       if (!res.ok) return null;
@@ -60,12 +69,13 @@ export async function saveRoom(room: Room): Promise<void> {
   if (KV_URL && KV_TOKEN) {
     try {
       // 24 hour TTL (86400 seconds)
-      await fetch(`${KV_URL}/set/room:${upperId}?ex=86400`, {
+      await fetch(KV_URL, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${KV_TOKEN}`,
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(room)
+        body: JSON.stringify(["SET", `room:${upperId}`, JSON.stringify(room), "EX", 86400])
       });
       return;
     } catch (e) {
@@ -79,11 +89,13 @@ export async function deleteRoom(id: string): Promise<void> {
   const upperId = id.toUpperCase();
   if (KV_URL && KV_TOKEN) {
     try {
-      await fetch(`${KV_URL}/del/room:${upperId}`, {
+      await fetch(KV_URL, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${KV_TOKEN}`,
+          "Content-Type": "application/json"
         },
+        body: JSON.stringify(["DEL", `room:${upperId}`])
       });
       return;
     } catch (e) {
@@ -97,10 +109,13 @@ export async function hasRoom(id: string): Promise<boolean> {
   const upperId = id.toUpperCase();
   if (KV_URL && KV_TOKEN) {
     try {
-      const res = await fetch(`${KV_URL}/exists/room:${upperId}`, {
+      const res = await fetch(KV_URL, {
+        method: "POST",
         headers: {
           Authorization: `Bearer ${KV_TOKEN}`,
+          "Content-Type": "application/json"
         },
+        body: JSON.stringify(["EXISTS", `room:${upperId}`]),
         cache: 'no-store'
       });
       if (res.ok) {
