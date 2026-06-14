@@ -1,59 +1,70 @@
-# Impostor Word Game
+# 🕵️‍♂️ Impostor Word Game
 
-A fun browser-based party game inspired by **social deduction games**.  
-Players take turns revealing a secret word, but one player (the impostor) gets a **different word**. After a discussion, everyone votes to find the impostor!
-
----
-
-## Features
-
-- Supports **3–12 players**  
-- Choose from multiple categories (Food, Animals, Places, Objects, Movies, Jobs)  
-- Enter **custom player names**  
-- Each player secretly sees their word (civilian or impostor)  
-- Animated design with background elements  
-- Built-in **voting system** to catch the impostor  
-- Works entirely in the browser — no server required  
+An interactive, premium social deduction game built with **Next.js**, **React**, and **Tailwind CSS**. Players must guess who among them is the hidden Impostor using clever single-word clues, while the Impostor tries to blend in with a closely related secret word.
 
 ---
 
-## Tech Stack
+## 🎮 Game Rules & Loop
 
-- **HTML** – structure  
-- **CSS** – styling and animations  
-- **JavaScript** – game logic (player turns, impostor selection, voting)  
+### 1. The Setup
+- Players enter their nickname (which is securely saved on their device's local storage for seamless room entry).
+- The host selects a category (e.g. *Food*, *Animals*, *Locations*, *Brands*) and the number of players.
+- The game assigns words:
+  - **Civilians** receive the secret **Civilian Word** (e.g., *Apple*).
+  - The **Impostor** receives the **Impostor Word**, a closely related but different word (e.g., *Pear*).
 
----
+### 2. The Clue Phase
+- In turn order, each player must give a **single-word clue** that relates to their secret word.
+- **Civilians** try to give clues that prove to other civilians they know the secret word, without being too obvious (otherwise the Impostor will guess it).
+- The **Impostor** must listen to others' clues and invent a matching clue to blend in and avoid detection.
 
-## Project Structure
+### 3. Discussion & Voting (Among Us Style)
+- After all clues are shared, players discuss and vote for the player they suspect is the Impostor.
+- The game features a fully custom **Among Us themed voting screen**:
+  - **Avatars**: Every player has a custom-colored Crewmate avatar.
+  - **Voter Reveal**: See who voted for whom via visual crewmate symbols appearing on the player cards.
+  - **Voted Status**: Real-time status shows a Ballot Box check symbol once a player has cast their vote.
 
-impostor-word-game/
-│
-├── index.html        # Main game UI
-├── style.css         # Styling and animations
-├── script.js         # Game logic
-├── words.json        # Word categories and word lists
-└── README.md         # Project documentation
-
----
-
-## How to Play
-
-1. Open `index.html` in your browser.  
-2. Choose a **category** and set the number of players.  
-3. Enter player names and click **Start Game**.  
-4. Each player, one at a time, secretly reveals their word.  
-   - **Civilians** see the same word.  
-   - **The impostor** sees a different word in the same category.  
-5. Players discuss and try to identify the impostor.  
-6. Everyone votes for who they think the impostor is.  
-7. The game reveals the impostor and declares the result! 🎉  
+### 4. The Verdict
+- If the civilians successfully vote out the Impostor, **Civilians Win!**
+- If the civilians vote out an innocent player, the **Impostor Wins!** (Triggering an Among Us style red shushing crewmate win screen).
 
 ---
 
-## Installation & Usage
+## ✨ Features
 
-1. Clone or download this repository:  
+- 🌐 **Two Play Modes**:
+  - **Local Pass & Play**: Play offline with friends passing a single device around.
+  - **Online Multiplayer**: Create rooms with 4-letter codes and play synchronously on separate devices.
+- 🎭 **Premium Visuals**: Sleek dark mode theme with glassmorphic panels, vibrant accent glows, micro-animations, and custom SVG icons.
+- 💾 **Instant Identity**: Automated username caching via local storage makes joining or creating rooms zero-friction.
+- ⚙️ **Host Settings**: Host controls player count (with custom step buttons) and categories.
 
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Frontend**: Next.js 16 (App Router), React, Tailwind CSS, Lucide Icons
+- **State Store**: Lightweight Next.js API route handlers utilizing a global in-memory room store (`globalThis.roomStore`) to register and update multiplayer rooms in real time.
+- **Network Sync**: Fast client-side polling ensuring state updates sync within 1.5 seconds across all player devices.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18.x or higher recommended)
+- npm or yarn
+
+### Installation
+1. Install dependencies:
    ```bash
-   git clone https://github.com/yourusername/impostor-word-game.git
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to start playing!
