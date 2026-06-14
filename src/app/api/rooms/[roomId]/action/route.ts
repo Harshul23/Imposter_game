@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { rooms } from "@/lib/roomStore";
+import { getRoom, saveRoom, deleteRoom } from "@/lib/roomStore";
 import fs from "fs";
 import path from "path";
 
@@ -20,8 +20,7 @@ export async function POST(
 ) {
   try {
     const { roomId } = await params;
-    const roomKey = roomId.toUpperCase();
-    const room = rooms[roomKey];
+    const room = await getRoom(roomId);
 
     if (!room) {
       return NextResponse.json({ error: "Room not found" }, { status: 404 });
@@ -165,18 +164,23 @@ export async function POST(
       case "leave": {
         room.players = room.players.filter(p => p.id !== playerId);
         if (room.players.length === 0) {
-          delete rooms[roomKey];
+          await deleteRoom(roomId);
         } else {
           const wasHost = room.players.find(p => p.id === playerId)?.isHost;
           if (wasHost && room.players.length > 0) {
             room.players[0].isHost = true;
           }
+          await saveRoom(room);
         }
         break;
       }
 
       default:
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    }
+
+    if (room.players.length > 0) {
+      await saveRoom(room);
     }
 
     return NextResponse.json({ room });

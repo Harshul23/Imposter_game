@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { rooms } from "@/lib/roomStore";
+import { getRoom } from "@/lib/roomStore";
 
 export async function GET(
   request: Request,
@@ -7,8 +7,7 @@ export async function GET(
 ) {
   try {
     const { roomId } = await params;
-    const roomKey = roomId.toUpperCase();
-    const room = rooms[roomKey];
+    const room = await getRoom(roomId);
 
     if (!room) {
       return NextResponse.json({ error: "Room not found" }, { status: 404 });

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { rooms, Player } from "@/lib/roomStore";
+import { getRoom, saveRoom, Player } from "@/lib/roomStore";
 
 export async function POST(
   request: Request,
@@ -7,8 +7,7 @@ export async function POST(
 ) {
   try {
     const { roomId } = await params;
-    const roomKey = roomId.toUpperCase();
-    const room = rooms[roomKey];
+    const room = await getRoom(roomId);
 
     if (!room) {
       return NextResponse.json({ error: "Room not found" }, { status: 404 });
@@ -25,6 +24,7 @@ export async function POST(
     const existingPlayer = room.players.find((p) => p.id === playerId);
     if (existingPlayer) {
       existingPlayer.name = playerName.trim(); // Update name in case it changed
+      await saveRoom(room);
       return NextResponse.json({ room, playerId });
     }
 
@@ -46,6 +46,7 @@ export async function POST(
     };
 
     room.players.push(newPlayer);
+    await saveRoom(room);
 
     return NextResponse.json({ room, playerId });
   } catch (error) {

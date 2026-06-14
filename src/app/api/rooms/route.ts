@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { rooms, Room, Player } from "@/lib/roomStore";
+import { hasRoom, saveRoom, Room, Player } from "@/lib/roomStore";
 
 function generateRoomId() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
     let roomId = generateRoomId();
     let retries = 0;
-    while (rooms[roomId] && retries < 50) {
+    while (await hasRoom(roomId) && retries < 50) {
       roomId = generateRoomId();
       retries++;
     }
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       votedPlayerId: null,
     };
 
-    rooms[roomId] = newRoom;
+    await saveRoom(newRoom);
 
     return NextResponse.json({ room: newRoom, playerId });
   } catch (error) {
