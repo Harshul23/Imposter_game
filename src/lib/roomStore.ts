@@ -1,3 +1,5 @@
+import Redis from "ioredis";
+
 export interface Player {
   id: string;
   name: string;
@@ -20,6 +22,7 @@ export interface Room {
 
 declare global {
   var roomStore: Record<string, Room> | undefined;
+  var redisClient: Redis | undefined;
 }
 
 function getLocalStore(): Record<string, Room> {
@@ -38,9 +41,37 @@ const KV_TOKEN = process.env.KV_REST_API_TOKEN ||
                  process.env.REDIS_REST_API_TOKEN || 
                  process.env.UPSTASH_REDIS_REST_TOKEN;
 
+const REDIS_URL = process.env.REDIS_URL;
+
+function getRedisClient(): Redis | null {
+  if (REDIS_URL) {
+    if (!globalThis.redisClient) {
+      globalThis.redisClient = new Redis(REDIS_URL, {
+        maxRetriesPerRequest: 3,
+        connectTimeout: 5000,
+        lazyConnect: true
+      });
+    }
+    return globalThis.redisClient;
+  }
+  return null;
+}
+
 export async function getRoom(id: string): Promise<Room | null> {
   const upperId = id.toUpperCase();
-  if (KV_URL && KV_TOKEN) {
+  const redis = getRedisClient();
+
+  if (redis) {
+    try {
+      const data = await redis.get(`room:${upperId}`);
+      if (data) {
+        return JSON.parse(data) as Room;
+      }
+      return null;
+    } catch (e) {
+      console.error("ioredis Error getting room:", e);
+    }
+  } else if (KV_URL && KV_TOKEN) {
     try {
       const res = await fetch(KV_URL, {
         method: "POST",
@@ -66,9 +97,18 @@ export async function getRoom(id: string): Promise<Room | null> {
 
 export async function saveRoom(room: Room): Promise<void> {
   const upperId = room.id.toUpperCase();
-  if (KV_URL && KV_TOKEN) {
+  const redis = getRedisClient();
+
+  if (redis) {
     try {
       // 24 hour TTL (86400 seconds)
+      await redis.set(`room:${upperId}`, JSON.stringify(room), "EX", 86400);
+      return;
+    } catch (e) {
+      console.error("ioredis Error saving room:", e);
+    }
+  } else if (KV_URL && KV_TOKEN) {
+    try {
       await fetch(KV_URL, {
         method: "POST",
         headers: {
@@ -87,7 +127,16 @@ export async function saveRoom(room: Room): Promise<void> {
 
 export async function deleteRoom(id: string): Promise<void> {
   const upperId = id.toUpperCase();
-  if (KV_URL && KV_TOKEN) {
+  const redis = getRedisClient();
+
+  if (redis) {
+    try {
+      await redis.del(`room:${upperId}`);
+      return;
+    } catch (e) {
+      console.error("ioredis Error deleting room:", e);
+    }
+  } else if (KV_URL && KV_TOKEN) {
     try {
       await fetch(KV_URL, {
         method: "POST",
@@ -107,7 +156,16 @@ export async function deleteRoom(id: string): Promise<void> {
 
 export async function hasRoom(id: string): Promise<boolean> {
   const upperId = id.toUpperCase();
-  if (KV_URL && KV_TOKEN) {
+  const redis = getRedisClient();
+
+  if (redis) {
+    try {
+      const count = await redis.exists(`room:${upperId}`);
+      return count === 1;
+    } catch (e) {
+      console.error("ioredis Error checking existence:", e);
+    }
+  } else if (KV_URL && KV_TOKEN) {
     try {
       const res = await fetch(KV_URL, {
         method: "POST",
