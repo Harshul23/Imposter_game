@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka:wght@400;700&family=Patrick+Hand&family=Gochi+Hand&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Ice Cream Man';
+  src: url('/IceCreamMan.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  --background: #030712;
-  --foreground: #f3f4f6;
+  --background: #faf8f5;
+  --foreground: #0f172a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Fredoka', var(--font-geist-sans), sans-serif;
+  --font-handwritten: 'Patrick Hand', 'Gochi Hand', cursive;
+  --font-comic: 'Comic Neue', var(--font-geist-mono), monospace;
+  --font-icecream: 'Ice Cream Man', sans-serif;
 }
 
 body {
@@ -19,75 +29,184 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism Panel styles */
+/* Paper Grid background utility */
+.bg-dots {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+}
+
+/* Notebook paper card (was glass-panel) */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background-color: #ffffff;
+  border: 2.5px solid #0f172a;
+  box-shadow: 5px 5px 0px 0px #0f172a;
+  border-radius: 16px;
+  color: #0f172a;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .glass-panel-hover:hover {
-  background: rgba(15, 23, 42, 0.8);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.08);
-}
-
-/* Dotted background utility */
-.bg-dots {
-  background-size: 24px 24px;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 7px 7px 0px 0px #0f172a;
+  transform: translate(-2px, -2px);
 }
 
 /* Custom Scrollbars */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f1f5f9;
+  border-left: 1px solid #cbd5e1;
+  border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: #94a3b8;
+  border: 2px solid #f1f5f9;
   border-radius: 9999px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #64748b;
 }
 
 /* Keyframes & Animations */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.97) translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes blobGlow {
+@keyframes sketchWobble {
   0%, 100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: rotate(-0.5deg);
   }
-  33% {
-    transform: translate(30px, -40px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
+  50% {
+    transform: rotate(0.5deg);
   }
 }
 
-.animate-fade-in {
-  animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-wobble {
+  animation: sketchWobble 4s infinite ease-in-out;
 }
 
-.animate-blob {
-  animation: blobGlow 15s infinite alternate ease-in-out;
+/* Marker-style Cartoon Buttons */
+.btn-marker-primary {
+  background-color: #bae6fd; /* Sky blue marker */
+  border: 2.5px solid #0f172a;
+  border-radius: 12px;
+  color: #0f172a;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px 0px #0f172a;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.btn-marker-primary:hover:not(:disabled) {
+  background-color: #7dd3fc;
+  box-shadow: 5px 5px 0px 0px #0f172a;
+  transform: translate(-1px, -1px);
+}
+.btn-marker-primary:active:not(:disabled) {
+  box-shadow: 1px 1px 0px 0px #0f172a;
+  transform: translate(3px, 3px);
+}
+.btn-marker-primary:disabled {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  box-shadow: 2px 2px 0px 0px #cbd5e1;
+  cursor: not-allowed;
 }
 
+.btn-marker-secondary {
+  background-color: #fed7aa; /* Orange marker */
+  border: 2.5px solid #0f172a;
+  border-radius: 12px;
+  color: #0f172a;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px 0px #0f172a;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.btn-marker-secondary:hover:not(:disabled) {
+  background-color: #fdba74;
+  box-shadow: 5px 5px 0px 0px #0f172a;
+  transform: translate(-1px, -1px);
+}
+.btn-marker-secondary:active:not(:disabled) {
+  box-shadow: 1px 1px 0px 0px #0f172a;
+  transform: translate(3px, 3px);
+}
+.btn-marker-secondary:disabled {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  box-shadow: 2px 2px 0px 0px #cbd5e1;
+  cursor: not-allowed;
+}
+
+.btn-marker-gray {
+  background-color: #f8fafc;
+  border: 2px solid #0f172a;
+  border-radius: 10px;
+  color: #334155;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.btn-marker-gray:hover:not(:disabled) {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  box-shadow: 4px 4px 0px 0px #0f172a;
+  transform: translate(-1px, -1px);
+}
+.btn-marker-gray:active:not(:disabled) {
+  box-shadow: 1px 1px 0px 0px #0f172a;
+  transform: translate(2px, 2px);
+}
+.btn-marker-gray:disabled {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  box-shadow: 1px 1px 0px 0px #cbd5e1;
+  cursor: not-allowed;
+}
+
+.btn-marker-danger {
+  background-color: #fecdd3; /* Pink marker */
+  border: 2px solid #0f172a;
+  border-radius: 10px;
+  color: #9f1239;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.btn-marker-danger:hover:not(:disabled) {
+  background-color: #fda4af;
+  box-shadow: 4px 4px 0px 0px #0f172a;
+  transform: translate(-1px, -1px);
+}
+.btn-marker-danger:active:not(:disabled) {
+  box-shadow: 1px 1px 0px 0px #0f172a;
+  transform: translate(2px, 2px);
+}
+
+.marker-highlight-blue {
+  background-color: #bae6fd;
+  border: 2px solid #0f172a;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+}
+.marker-highlight-orange {
+  background-color: #fed7aa;
+  border: 2px solid #0f172a;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+}
+.marker-highlight-green {
+  background-color: #d1fae5;
+  border: 2px solid #0f172a;
+  box-shadow: 3px 3px 0px 0px #0f172a;
+}
