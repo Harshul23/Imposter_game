@@ -1,10 +1,10 @@
 {
   "Food": [
-    "Pizza","Burger","Pasta","Sushi","Cake","Ice Cream","Salad","Soup","Steak","Sandwich","Rice","Curry","Cheese","Taco","Donut","Hotdog","Fried Chicken","Noodles","Burrito","Pancakes",
-    "Waffles","Muffin","Croissant","Bagel","Toast","Jam","Butter","Honey","Chocolate","Candy","Chips","Popcorn","Nachos","Quesadilla","Lasagna","Ramen","Dumplings","Spring Roll","Kebab","Falafel",
-    "Shawarma","BBQ","Fries","Mashed Potatoes","Gravy","Pie","Brownie","Cupcake","Pudding","Custard","Milkshake","Smoothie","Juice","Soda","Water","Coffee","Tea","Espresso","Latte","Cappuccino",
-    "Milk","Yogurt","Cheesecake","Gnocchi","Risotto","Paella","Caviar","Lobster","Shrimp","Crab","Oyster","Clam","Scallop","Octopus","Squid","Salmon","Tuna","Beef","Pork","Lamb","Goat",
-    "Duck","Turkey","Ham","Bacon","Sausage","Pepperoni","Vegetables","Carrot","Potato","Onion","Garlic","Tomato","Cucumber","Lettuce","Spinach","Broccoli","Cauliflower","Mushroom","Pepper","Chili","Corn","Peas","Beans","Lentils","Chickpeas","Olives","Avocado","Mango","Apple","Banana","Grapes","Orange","Strawberry","Blueberry","Pineapple","Papaya"
+    "Samosa", "Biryani", "Dosa", "Roti", "Naan", "Idli", "Paneer", "Chole", "Puri", "Gulab Jamun",
+    "Lassi", "Kheer", "Dhokla", "Vada Pav", "Dal", "Khichdi", "Pakora", "Halwa", "Papad", "Raita",
+    "Jalebi", "Kofta", "Pulao", "Rasgulla", "Paneer Tikka", "Kulfi", "Chaat", "Pani Puri", "Aloo Paratha", "Upma",
+    "Poha", "Laddu", "Pav Bhaji", "Kachori", "Sambar", "Appam", "Uttapam", "Chutney", "Barfi", "Rasmalai",
+    "Kadhai Paneer", "Dal Makhani", "Tandoori Rotis", "Aloo Jeera", "Bhindi Masala", "Gajar Halwa", "Modak", "Kheer", "Dal Bati", "Bhatura"
   ],
   "Animals": [
     "Tiger","Lion","Elephant","Giraffe","Dog","Cat","Monkey","Zebra","Shark","Dolphin","Eagle","Owl","Horse","Snake","Panda","Kangaroo","Penguin","Whale","Wolf","Fox",
